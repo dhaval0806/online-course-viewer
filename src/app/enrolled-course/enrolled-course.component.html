@@ -1,0 +1,19 @@
+<div class="container mt-4">
+  <h3>Enrolled Courses</h3>
+
+  <div class="card mb-3" *ngFor="let item of enrolledCourse">
+    <div class="card-body">
+      <h5>{{ item.courseName }}</h5>
+      <p>{{ item.instructorName }}</p>
+
+      <div class="progress">
+        <div class="progress-bar"
+             [style.width.%]="getProgress(item)">
+          {{ getProgress(item) }}%
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-sm btn-primary" (click)="goBack()">Back
+</button>
+</div>

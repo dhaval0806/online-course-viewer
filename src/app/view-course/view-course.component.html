@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2>{{course.courseName}}</h2>
+    <p>{{course.description}}</p>
+    <p>
+        <span class="badge bg-info">{{course.level}}</span>
+        <span class="ms-3">Lessons: {{ course.topics.length }}</span>
+    </p>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of course.topics">
+      <strong>{{ item.topicName }}</strong>
+
+      <div class="mt-2">
+        <a [href]="item.topicVideoUrl"
+           target="_blank"
+           class="btn btn-sm btn-primary me-2">
+          Video
+        </a>
+
+        <a *ngIf="item.topicPdfUrl"
+           [href]="item.topicPdfUrl"
+           target="_blank"
+           class="btn btn-sm btn-outline-secondary">
+          PDF
+        </a>
+          <button
+      class="btn btn-sm"
+      style="margin-left: 7px !important;"
+      [ngClass]="item.isCompleted ? 'btn-success' : 'btn-outline-success'"
+      (click)="toggleCompletion(item)">
+      {{ item.isCompleted ? 'Completed' : 'Mark as Completed' }}
+    </button>
+      </div>
+        </li>
+    </ul>
+     <div class="progress mt-3">
+        <div class="progress-bar"
+            [style.width.%]="progress">
+        {{ progress }}%
+        </div>
+
+         
+  </div>
+  <button class="btn btn-sm btn-primary mt-3" (click)="goBack()">Back
+</button>
+</div>
